@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Shield360 - Shadow IT Agent",
+  "description": "Automatically scans visited URLs for phishing, malware, and defacement threats via local ML engine.",
+  "version": "1.0.0",
+  "permissions": [
+    "tabs",
+    "webNavigation",
+    "notifications"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*",
+    "http://localhost:5000/*",
+    "https://*.onrender.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

@@ -1,0 +1,44 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# ML model files — store separately (see README)
+model.pkl
+vectorizer.pkl
+
+# Dataset — too large for git
+malicious_phish.csv
+
+# Database — generated at runtime
+shield360.db
+
+# Environment variables
+.env
+.env.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / React dashboard
+dashboard/node_modules/
+dashboard/dist/
+dashboard/.env.local
+
+# Logs
+*.log
