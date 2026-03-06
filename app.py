@@ -115,7 +115,7 @@ def load_model():
 if not load_model():
     print("[WARN] Model files not found. Run shield360_engine.py (Option 1) to train.")
 else:
-    print("✅ Shield360 Server ready — model loaded successfully")
+    print("[OK] Shield360 Server ready - model loaded successfully")
 
 # --- CONFIDENCE THRESHOLD ---
 # Only flag as threat when model confidence is >= this value; otherwise treat as benign
@@ -164,7 +164,7 @@ def scan():
     if is_allowlisted(url):
         log_scan(url, "company_allowed", 1.0)
         result = {"url": url, "status": "company_allowed", "confidence": 1.0}
-        print(f"✅ {url[:70]} → company_allowed")
+        print(f"[ALLOWED] {url[:70]}")
         return jsonify(result)
 
     try:
@@ -181,7 +181,7 @@ def scan():
     log_scan(url, status, confidence)
 
     result = {"url": url, "status": status, "confidence": round(confidence, 4)}
-    print(f"🔍 {url[:70]} → {status} ({confidence:.0%})")
+    print(f"[SCAN] {url[:70]} -> {status} ({confidence:.0%})")
     return jsonify(result)
 
 
@@ -269,7 +269,7 @@ def add_allowlist():
     except sqlite3.IntegrityError:
         return jsonify({"error": f"'{domain}' is already in the allowlist"}), 409
 
-    print(f"✅ Allowlisted: {domain}")
+    print(f"[ALLOWLIST] Added: {domain}")
     return jsonify({"message": f"'{domain}' added to company allowlist.", "domain": domain}), 201
 
 
@@ -286,7 +286,7 @@ def remove_allowlist(entry_id):
             conn.execute("DELETE FROM allowlist WHERE id = ?", (entry_id,))
             conn.commit()
 
-    print(f"🗑 Removed from allowlist: {row['domain']}")
+    print(f"[ALLOWLIST] Removed: {row['domain']}")
     return jsonify({"message": f"'{row['domain']}' removed from allowlist."})
 
 
