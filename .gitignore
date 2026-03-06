@@ -9,11 +9,11 @@ __pycache__/
 dist/
 build/
 
-# ML model files — store separately (see README)
-model.pkl
-vectorizer.pkl
+# ML model files — included in repo for deployment
+# model.pkl
+# vectorizer.pkl
 
-# Dataset — too large for git
+# Dataset — never commit (contains real malicious URLs with embedded credentials)
 malicious_phish.csv
 
 # Database — generated at runtime

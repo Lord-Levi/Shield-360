@@ -124,7 +124,6 @@ if __name__ == "__main__":
         choice = input("Select Option: ")
 
         if choice == '1':
-            train
-            model()
+            train_model()
         elif choice == '2':
             break
