@@ -5,9 +5,7 @@
  */
 
 // Change this to your Render URL after deployment
-// e.g. "https://shield360-api.onrender.com"
-// For local use: "http://127.0.0.1:5000"
-const SHIELD360_SERVER = "http://127.0.0.1:5000";
+const SHIELD360_SERVER = "https://shield-360-1.onrender.com";
 const SCAN_ENDPOINT = `${SHIELD360_SERVER}/scan`;
 const RECENT_SCANS_MS = 5000; // Debounce: skip re-scanning same URL within 5s
 
@@ -60,7 +58,6 @@ async function analyzeUrl(url) {
       });
     }
   } catch (err) {
-    // Server may be offline; fail silently to avoid spamming user
     console.debug("[Shield360] Server unreachable:", err.message);
   }
 }
