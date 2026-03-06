@@ -90,23 +90,8 @@ def is_allowlisted(url: str) -> bool:
     return row is not None
 
 
-# --- CUSTOM TOKENIZER (must match training) ---
-def make_tokens(f):
-    tokens_by_slash = str(f).split("/")
-    total_tokens = []
-    for i in tokens_by_slash:
-        tokens = str(i).split("-")
-        tokens_dot = []
-        for j in tokens:
-            temp_tokens = str(j).split(".")
-            tokens_dot = tokens_dot + temp_tokens
-        total_tokens = total_tokens + tokens + tokens_dot
-    total_tokens = list(set(total_tokens))
-    # Remove noise tokens that carry no meaningful signal
-    for noise in ("com", "www", "https:", "http:", ""):
-        if noise in total_tokens:
-            total_tokens.remove(noise)
-    return total_tokens
+# make_tokens is imported from tokenizer.py so pickle can find it at load time
+from tokenizer import make_tokens
 
 
 # --- LOAD ML MODEL ---

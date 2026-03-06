@@ -4,30 +4,14 @@ import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+from tokenizer import make_tokens
 
 # --- CONFIGURATION ---
 DATASET_FILE = 'malicious_phish.csv' 
 MODEL_FILE = 'model.pkl'           
 VECTORIZER_FILE = 'vectorizer.pkl'
 
-# --- 1. TOKENIZATION (PRE-PROCESSING) ---
-# This function cleans the text by breaking URLs into words
-def make_tokens(f):
-    tokens_by_slash = str(f).split('/')
-    total_tokens = []
-    for i in tokens_by_slash:
-        tokens = str(i).split('-')
-        tokens_dot = []
-        for j in tokens:
-            temp_tokens = str(j).split('.')
-            tokens_dot = tokens_dot + temp_tokens
-        total_tokens = total_tokens + tokens + tokens_dot
-    total_tokens = list(set(total_tokens))
-    # Remove noise tokens that carry no meaningful signal
-    for noise in ('com', 'www', 'https:', 'http:', ''):
-        if noise in total_tokens:
-            total_tokens.remove(noise)
-    return total_tokens
+# make_tokens is imported from tokenizer.py (shared with app.py)
 
 # Known benign URLs to augment training (fixes false positives on common sites)
 TRUSTED_BENIGN_URLS = [
