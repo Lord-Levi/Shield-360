@@ -139,6 +139,15 @@ CONFIDENCE_THRESHOLD = 0.70
 
 # --- API ENDPOINTS ---
 
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({
+        "service": "Shield360 API",
+        "status": "running",
+        "endpoints": ["/health", "/scan", "/logs", "/stats", "/allowlist"]
+    })
+
+
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({
