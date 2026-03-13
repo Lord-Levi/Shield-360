@@ -37,7 +37,15 @@ venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 ```
 
-### 2. Train the ML model
+### 2. Get the training dataset and train the ML model
+The model expects **`malicious_phish.csv`** in the project root with two columns: `url` and `type` (values: `benign`, `phishing`, `malware`, `defacement`).
+
+**Where to get it:**
+- **Kaggle – Corrected Phishing URLs (recommended):**  
+  [Corrected Phishing URLs Dataset](https://www.kaggle.com/datasets/sslliiman/phishstorm-phishing-legitimate-url-dataset) — download the CSV, ensure it has `url` and `type` columns, and save/rename it as `malicious_phish.csv`.
+- **Kaggle – Malicious and Benign URLs:**  
+  [Malicious and Benign URLs](https://www.kaggle.com/datasets/nhutrinhanna/malicious-and-benign-urls-datasets) — if the file has different column names, rename them to `url` and `type`.
+
 Place `malicious_phish.csv` in the project root, then run:
 ```bash
 python shield360_engine.py

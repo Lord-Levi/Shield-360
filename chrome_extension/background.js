@@ -4,7 +4,9 @@
  * Triggers native notifications when threats are detected.
  */
 
-// Change this to your Render URL after deployment
+// For local dev: use your machine so the dashboard (localhost:5173) reads the same DB.
+// For production: change to your Render URL, e.g. "https://shield-360-1.onrender.com"
+//const SHIELD360_SERVER = "http://127.0.0.1:5001";
 const SHIELD360_SERVER = "https://shield-360-1.onrender.com";
 const SCAN_ENDPOINT = `${SHIELD360_SERVER}/scan`;
 const RECENT_SCANS_MS = 5000; // Debounce: skip re-scanning same URL within 5s
